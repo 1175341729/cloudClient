@@ -7,3 +7,5 @@ eureka:
 spring:
   application:
     name: service-hi
+
+feign.hystrix.enabled: true

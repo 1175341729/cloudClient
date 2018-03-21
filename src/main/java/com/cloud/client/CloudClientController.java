@@ -22,6 +22,9 @@ public class CloudClientController {
     @Resource
     private LoadBalancerClient loadBalancerClient;
 
+    @Resource
+    private ConsumerFeign consumerFeign;
+
     @GetMapping("/cloudClient")
     public String cloudClient(){
         List<String> services = discoveryClient.getServices();
@@ -35,5 +38,10 @@ public class CloudClientController {
         String url = "http://" + serviceInstance.getHost() + ":" + serviceInstance.getPort() + "/consumeActive";
         return restTemplate.getForObject(url,String.class);
 
+    }
+
+    @GetMapping("/consumerFeign")
+    public String consumer() throws InterruptedException {
+        return consumerFeign.consumeActive();
     }
 }
