@@ -7,5 +7,5 @@ eureka:
 spring:
   application:
     name: service-hi
-
+# 开启短路
 feign.hystrix.enabled: true
