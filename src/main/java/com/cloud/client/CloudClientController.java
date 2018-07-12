@@ -4,11 +4,14 @@ import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 public class CloudClientController {
@@ -43,5 +46,10 @@ public class CloudClientController {
     @GetMapping("/consumerFeign")
     public String consumer() throws InterruptedException {
         return consumerFeign.consumeActive();
+    }
+
+    @PostMapping("/post")
+    public String post(@RequestBody Map<String,Object> param){
+        return "1234";
     }
 }
