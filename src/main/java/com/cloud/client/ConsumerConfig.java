@@ -36,4 +36,11 @@ public class ConsumerConfig {
         consumer.start();
         return consumer;
     }
+
+    @Bean
+    public Consumer consumerFactory2(){
+        consumer.subscribe("dengwei_topic2", "*", new MyMessageListener2());//对应的消费者监听器
+        consumer.start();
+        return consumer;
+    }
 }
