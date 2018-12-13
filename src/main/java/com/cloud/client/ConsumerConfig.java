@@ -14,7 +14,7 @@ import java.util.Properties;
  *  @Description: TODO
  *  @Date 2018/7/12 14:46
  */
-@Configuration
+//@Configuration
 public class ConsumerConfig {
 
     private static Consumer consumer;
@@ -22,11 +22,11 @@ public class ConsumerConfig {
     @PostConstruct
     public void init(){
         Properties consumerProperties = new Properties();
-        consumerProperties.setProperty(PropertyKeyConst.ConsumerId, "CID_dengwei_topic_consumer");
-        consumerProperties.setProperty(PropertyKeyConst.AccessKey, "LTAI7CdTu6sOsvQ4");
-        consumerProperties.setProperty(PropertyKeyConst.SecretKey, "9z1h1SqL9zjdRHb4tZh9ZkOkZqBhgY");
-        //consumerProperties.setProperty(PropertyKeyConst.ConsumeThreadNums,MqConfig.THREAD_NUM);
-        consumerProperties.setProperty(PropertyKeyConst.ONSAddr, "http://onsaddr-internet.aliyun.com/rocketmq/nsaddr4client-internet");
+//        consumerProperties.setProperty(PropertyKeyConst.ConsumerId, "CID_dengwei_topic_consumer");
+//        consumerProperties.setProperty(PropertyKeyConst.AccessKey, "LTAI7CdTu6sOsvQ4");
+//        consumerProperties.setProperty(PropertyKeyConst.SecretKey, "9z1h1SqL9zjdRHb4tZh9ZkOkZqBhgY");
+//        //consumerProperties.setProperty(PropertyKeyConst.ConsumeThreadNums,MqConfig.THREAD_NUM);
+//        consumerProperties.setProperty(PropertyKeyConst.ONSAddr, "http://onsaddr-internet.aliyun.com/rocketmq/nsaddr4client-internet");
         consumer = ONSFactory.createConsumer(consumerProperties);
     }
 

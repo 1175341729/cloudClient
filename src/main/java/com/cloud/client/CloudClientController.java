@@ -1,5 +1,7 @@
 package com.cloud.client;
 
+import com.cloud.client.mapper.UserMapper;
+import com.cloud.client.model.User;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
@@ -15,18 +17,16 @@ import java.util.Map;
 
 @RestController
 public class CloudClientController {
-
     @Resource
     private DiscoveryClient discoveryClient;
-
     @Resource
     private RestTemplate restTemplate;
-
     @Resource
     private LoadBalancerClient loadBalancerClient;
-
     @Resource
     private ConsumerFeign consumerFeign;
+    @Resource
+    private UserMapper userMapper;
 
     @GetMapping("/cloudClient")
     public String cloudClient(){
@@ -51,5 +51,15 @@ public class CloudClientController {
     @PostMapping("/post")
     public String post(@RequestBody Map<String,Object> param){
         return "1234";
+    }
+
+    @GetMapping("/insertUser")
+    public Integer insertUser(){
+        User user = new User();
+        user.setName("XXX");
+        user.setAge(26);
+        int id = userMapper.insert(user);
+
+        return 0;
     }
 }
